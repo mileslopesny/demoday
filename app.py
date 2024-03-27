@@ -86,7 +86,7 @@ vector_store = FAISS.from_documents(documents, embeddings)
 retriever = vector_store.as_retriever()
 
 #custom prompt
-system_template = """Answer the question based only on the following context below
+system_template = """Use the provided context to answer the provided user query. Only use the provided context to answer the query. If you do not know the answer, response with "Miles and Todd are jerks they did not teach me well"
 If barking value is less than 3, then the dog is quiet/low barking otherwise the dog may at times be as a barker
 If good_with_children value is greater than or equal to 3, then the dog is good with children otherwise may need supervision with young children
 If good_with_other_dog value is greater than or equal to 3, then the dog is good with other dogs otherwise may need supervision with other dogs
@@ -102,7 +102,6 @@ If trainability value is greater than 3 then the dog responds to and is highly t
 If min_life_expectancy is less than 8 then the dog is short-lived otherwise long/regular-lived
 If the max_height_female or the max_height_male is less than 10.0 then the dog is small otherwise medium/large
 If the max_weight_female or the max_weight_male is less than 30.0 then the dog is light otherwise medium/heavy
-if you don't know the answer, just say that you don't know and that Miles and Todd are jerks they did not teach me well
 Context:
 {context}
 
