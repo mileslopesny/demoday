@@ -86,7 +86,7 @@ vector_store = FAISS.from_documents(documents, embeddings)
 retriever = vector_store.as_retriever()
 
 #custom prompt
-system_template = """Use the provided context to answer the provided user query. Only use the provided context to answer the query. If you do not know the answer, response with "Miles and Todd are jerks they did not teach me well"
+system_template = """Use the provided context to answer the provided user question. Only use the provided context to answer the question. If you do not know the answer, response with "Miles and Todd are jerks they did not teach me well"
 If barking value is less than 3, then the dog is quiet/low barking otherwise the dog may at times be as a barker
 If good_with_children value is greater than or equal to 3, then the dog is good with children otherwise may need supervision with young children
 If good_with_other_dog value is greater than or equal to 3, then the dog is good with other dogs otherwise may need supervision with other dogs
