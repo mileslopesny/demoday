@@ -86,9 +86,23 @@ vector_store = FAISS.from_documents(documents, embeddings)
 retriever = vector_store.as_retriever()
 
 #custom prompt
-system_template = """Answer the question based only on the following context. If you cannot answer the question with the context, please respond with 'I don't know':
-If the value for barking is less than 3, then consider that dog to have low barking
-If good with children value is greater than 3, then consider that good with children
+system_template = """Answer the question based only on the following context below
+If barking value is less than 3, then the dog is quiet/low barking otherwise the dog may at times be as a barker
+If good_with_children value is greater than or equal to 3, then the dog is good with children otherwise may need supervision with young children
+If good_with_other_dog value is greater than or equal to 3, then the dog is good with other dogs otherwise may need supervision with other dogs
+If good_with_strangers value is greater than or equal to 3, then the dog is good with strangers otherwise may be suspicious of strangers
+If drooling value is 0 or less than 3 then the dog is not a drooler otherwise may have a tendency to drool
+If coat_length value is less than 2 then the dog has a short coat otherwise medium to long coat
+If grooming value is greater than 3 then the dog will require regular grooming otherwise grooming needs are low
+If shedding value is less than 3 then the dog is a non-shedder otherwise may have a tendency to shed
+If energy value is greater than 3 then the dog will require a lot of excercise otherwise exercise needs are low to moderate
+If playfulness value is greater than 3 then the dog will require a lot of attention and play otherwise play needs are low to moderate
+If protectiveness value is greater than 3 then the dog is a good guarder otherwise may not be useful as a guard dog
+If trainability value is greater than 3 then the dog responds to and is highly trainable otherwise may not respond/stick to trainng
+If min_life_expectancy is less than 8 then the dog is short-lived otherwise long/regular-lived
+If the max_height_female or the max_height_male is less than 10.0 then the dog is small otherwise medium/large
+If the max_weight_female or the max_weight_male is less than 30.0 then the dog is light otherwise medium/heavy
+if you don't know the answer, just say that you don't know and that Miles and Todd are jerks they did not teach me well
 Context:
 {context}
 
