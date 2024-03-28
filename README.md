@@ -8,10 +8,11 @@ cd demoday
 ```
 
 ``` bash
-pip install -r ewquirements.txt
+pip install -r requirements.txt
 ```
 
-create a file called source.env with this line : 
+create a file called source.env with this line :
+
 export OPENAI_API_KEY=[your open ai key goes here without the square brackets]
 
 then run this
